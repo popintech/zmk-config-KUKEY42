@@ -40,7 +40,15 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAPDANCE_KANA";
             #binding-cells = <0>;
-            bindings = <&kp INT2>, <&kp LANGUAGE_2>, <&sl 2>;
+            bindings =
+                <&to 0>,
+                <&to 1>,
+                <&to 2>,
+                <&to 3>,
+                <&to 4>,
+                <&to 5>,
+                <&to 6>,
+                <&to 7>;
 
             tapping-term-ms = <400>;
         };
@@ -60,10 +68,10 @@
 
         default_layer_org {
             bindings = <
-&kp Q             &kp W         &kp E         &kp R  &kp T                                           &kp Y        &kp U  &kp I      &kp O    &kp P
-&kp A             &kp S         &kp D         &kp F  &kp G        &mkp MCLK           &mo 2          &kp H        &kp J  &kp K      &kp L    &mt RIGHT_SHIFT SQT
-&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V  &kp B        &kp TAB             &kp DEL        &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL         &kp LEFT_ALT  &kp LEFT_WIN  &mo 3  &lt 3 SPACE  &tapdance_kana      &kp BACKSPACE  &lt 4 ENTER                             &kp LS(LG(S))
+&kp Q             &kp W         &kp E         &kp R  &kp T                                            &kp Y        &kp U  &kp I      &kp O    &kp P
+&kp A             &kp S         &kp D         &kp F  &kp G        &mkp MCLK           &tapdance_kana  &kp H        &kp J  &kp K      &kp L    &mt RIGHT_SHIFT SQT
+&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V  &kp B        &kp TAB             &kp DEL         &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LCTRL         &kp LEFT_ALT  &kp LEFT_WIN  &mo 3  &lt 3 SPACE  &tapdance_kana      &kp BACKSPACE   &lt 4 ENTER                             &kp LS(LG(S))
             >;
 
             sensor-bindings = <&WheelScroll SCRL_DOWN SCRL_UP>;
@@ -72,7 +80,7 @@
         default_layer {
             bindings = <
 &kp Q             &kp L         &kp U         &kp COMMA  &kp DOT                                           &kp F        &kp W  &kp R  &kp Y  &kp P
-&kp E             &kp I         &kp A         &kp O      &kp MINUS      &mkp MCLK           &mo 2          &kp K        &kp T  &kp N  &kp S  &kp H
+&kp E             &kp I         &kp A         &kp O      &kp MINUS      &mkp MCLK           &trans         &kp K        &kp T  &kp N  &kp S  &kp H
 &mt LEFT_SHIFT Z  &kp X         &kp C         &kp V      &kp SEMICOLON  &kp TAB             &kp DEL        &kp G        &kp D  &kp M  &kp J  &kp B
 &kp LCTRL         &kp LEFT_ALT  &kp LEFT_WIN  &mo 3      &lt 3 SPACE    &tapdance_kana      &kp BACKSPACE  &lt 4 ENTER                       &kp SLASH
             >;
@@ -96,14 +104,16 @@
 &kp LS(INTERNATIONAL_1)  &kp LEFT_ALT     &kp ASTERISK      &kp LEFT_PARENTHESIS  &mkp MCLK                             &kp TAB       &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_MINUS
 &kp MINUS                &kp UNDERSCORE   &mo 6             &mkp LCLK             &mkp RCLK  &trans         &trans      &kp KP_SLASH  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &mt RIGHT_SHIFT SINGLE_QUOTE
 &mt LEFT_SHIFT KP_PLUS   &kp KP_ASTERISK  &kp LEFT_BRACKET  &kp LC(V)             &kp LC(C)  &kp LC(Z)      &kp DELETE  &kp KP_N0     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_DOT
-&trans                   &trans           &trans            &trans                &trans     &trans         &trans      &trans                                                           &kp KP_NUMLOCK
+&trans                   &trans           &trans            &trans                &trans     &trans         &mkp LCLK   &mkp RCLK                                                        &kp KP_NUMLOCK
             >;
+
+            sensor-bindings = <&WheelScroll SCRL_LEFT SCRL_RIGHT>;
         };
 
         ARROW {
             bindings = <
 &kp AMPERSAND        &kp AT_SIGN       &kp RIGHT_BRACKET  &kp BACKSLASH  &kp LS(INTERNATIONAL_3)                                 &kp UNDER      &kp LC(KP_PLUS)  &kp ASTERISK    &kp LEFT_PARENTHESIS  &kp PLUS
-&kp MINUS            &kp LEFT_BRACKET  &kp EXCLAMATION    &kp QUESTION   &kp INT_YEN               &trans                &to 5   &kp PAGE_UP    &kp LC(MINUS)    &kp UP_ARROW    &kp CARET             &trans
+&kp MINUS            &kp LEFT_BRACKET  &kp EXCLAMATION    &kp QUESTION   &kp INT_YEN               &trans                &trans  &kp PAGE_UP    &kp LC(MINUS)    &kp UP_ARROW    &kp CARET             &trans
 &mt LEFT_SHIFT HASH  &kp PERCENT       &kp SINGLE_QUOTE   &kp SEMICOLON  &kp EQUAL                 &trans                &trans  &kp PAGE_DOWN  &kp LEFT_ARROW   &kp DOWN_ARROW  &kp RIGHT_ARROW       &kp LS(INTERNATIONAL_1)
 &trans               &trans            &trans             &trans         &mt LEFT_SHIFT LS(SPACE)  &lt 2 LANGUAGE_2      &trans  &trans                                                                &trans
             >;
@@ -114,7 +124,7 @@
         MOUSE {
             bindings = <
 &trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans  &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &to 0   &trans  &mkp MB1  &mo 6   &mkp MB2  &mkp MB3
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mo 6   &mkp MB2  &mkp MB3
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &trans  &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                              &bootloader
             >;
@@ -132,9 +142,9 @@
         BT {
             bindings = <
 &trans       &trans        &trans        &trans        &trans                           &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&trans       &trans        &trans        &trans        &trans  &trans      &sys_reset   &trans        &trans        &trans        &trans        &trans
-&trans       &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans      &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR
-&bootloader  &sys_reset    &trans        &trans        &trans  &trans      &trans       &trans                                                  &bt BT_CLR_ALL
+&trans       &trans        &trans        &trans        &trans  &sys_reset       &trans  &trans        &trans        &trans        &trans        &trans
+&trans       &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &bootloader      &trans  &trans        &trans        &trans        &trans        &bt BT_CLR
+&bootloader  &sys_reset    &trans        &trans        &trans  &trans           &trans  &trans                                                  &bt BT_CLR_ALL
             >;
         };
     };
